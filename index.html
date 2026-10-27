@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wrist &amp; Pocket UI — Styleguide</title>
+  <meta name="description" content="Living styleguide of Wrist & Pocket UI, the design system of wristandpocket.dev and WearView.">
+  <meta name="theme-color" content="#0c1016">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="header.css">
+  <style>
+    main { max-width: 1080px; margin: 0 auto; padding: 32px 16px 64px; }
+    section { margin-top: 48px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+    h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 16px; }
+    h3 { font-size: 0.95rem; font-weight: 600; margin: 20px 0 10px; color: var(--wp-text-secondary); }
+    p { color: var(--wp-text-secondary); max-width: 64ch; }
+    .lead { margin-top: 12px; font-size: 1.1rem; }
+    .lead a, footer a { color: var(--wp-accent); }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .swatch { border: 1px solid var(--wp-border-subtle); border-radius: var(--wp-radius-md); overflow: hidden; background: var(--wp-bg-surface); }
+    .swatch-chip { height: 64px; border-bottom: 1px solid var(--wp-border-subtle); }
+    .swatch-meta { padding: 8px 10px; font-size: 0.78rem; }
+    .swatch-meta code { display: block; color: var(--wp-text-primary); }
+    .swatch-meta span { color: var(--wp-text-tertiary); font-family: var(--wp-font-mono); font-size: 0.72rem; }
+    .cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+    .cards p { margin-top: 6px; font-size: 0.88rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--wp-border-subtle); }
+    th { color: var(--wp-text-tertiary); font-weight: 600; }
+    .sample { padding: 2px 8px; border-radius: var(--wp-radius-xs); font-weight: 600; }
+    .type-sans { font-size: 1.6rem; font-weight: 700; }
+    .type-mono { font-family: var(--wp-font-mono); font-size: 1.1rem; color: var(--wp-accent); }
+    .table-wrap { overflow-x: auto; }
+    .field { min-width: 200px; }
+    footer { margin-top: 64px; font-size: 0.85rem; color: var(--wp-text-tertiary); }
+    .wp-header-title { overflow: hidden; text-overflow: ellipsis; }
+    @media (max-width: 560px) { .wp-nav-tools { display: none; } }
+  </style>
+</head>
+<body>
+  <header class="wp-header">
+    <a class="wp-brand" href="https://wristandpocket.dev/" aria-label="Wrist & Pocket Studio">
+      <span class="wp-mark"><span>W</span>&amp;<span>P</span></span>
+    </a>
+    <span class="wp-header-divider">/</span>
+    <span class="wp-header-title">UI Styleguide</span>
+    <span class="wp-header-spacer"></span>
+    <nav class="wp-nav-tools" aria-label="Sections">
+      <a class="wp-nav-tool-link is-active" href="#palette">Palette</a>
+      <a class="wp-nav-tool-link" href="#components">Components</a>
+      <a class="wp-nav-tool-link" href="#contrast">Contrast</a>
+    </nav>
+    <span class="wp-status-pill"><span class="wp-dot wp-dot-ok"></span>v1.0.0</span>
+  </header>
+
+  <main>
+    <h1>Small screens.<br>One design system.</h1>
+    <p class="lead">The obsidian palette, Outfit + Fira Code and the components behind
+      <a href="https://wristandpocket.dev/">wristandpocket.dev</a> and
+      <a href="https://wristandpocket.dev/wearview/">WearView</a>. Zero dependencies, fully offline.</p>
+
+    <section id="palette">
+      <h2>Palette</h2>
+      <h3>Surfaces</h3>
+      <div class="grid" data-swatches="bg-app bg-sunken bg-surface bg-surface-elevated bg-surface-hover bg-surface-active bg-glass bg-header"></div>
+      <h3>Borders and text</h3>
+      <div class="grid" data-swatches="border-subtle border-medium border-hover border-strong text-bright text-primary text-secondary text-tertiary text-muted"></div>
+      <h3>Brand</h3>
+      <div class="grid" data-swatches="accent accent-hover accent-bg accent-border accent-purple accent-purple-hover accent-purple-bg"></div>
+      <h3>Status</h3>
+      <div class="grid" data-swatches="ok ok-bg warn warn-bg err err-bg info info-bg"></div>
+    </section>
+
+    <section>
+      <h2>Typography</h2>
+      <div class="wp-card">
+        <div class="type-sans">Outfit — Small screens. Real worlds.</div>
+        <p>Outfit 300–800 for interface and headings; the stack falls back to IBM Plex Sans and system fonts for Cyrillic and CJK.</p>
+        <div class="type-mono" style="margin-top: 12px">Fira Code — 454×454 · 60 fps · 0 B/frame</div>
+      </div>
+    </section>
+
+    <section id="components">
+      <h2>Components</h2>
+      <h3>Buttons</h3>
+      <div class="row">
+        <button class="wp-btn">Default</button>
+        <button class="wp-btn wp-btn-primary">Primary</button>
+        <button class="wp-btn wp-btn-ghost">Ghost</button>
+        <button class="wp-btn wp-btn-danger">Delete</button>
+        <button class="wp-btn" aria-pressed="false" data-toggle>Toggle</button>
+        <button class="wp-btn wp-btn-sm">Small</button>
+        <button class="wp-btn wp-btn-lg wp-btn-pill wp-btn-primary">Large pill</button>
+        <button class="wp-btn" disabled>Disabled</button>
+      </div>
+
+      <h3>Cards</h3>
+      <div class="cards">
+        <div class="wp-card"><strong>Surface</strong><p>Default panel for grouped content.</p></div>
+        <div class="wp-card wp-card-elevated"><strong>Elevated</strong><p>Popovers, dialogs, focus areas.</p></div>
+        <a class="wp-card wp-card-interactive" href="#components" style="color: inherit; text-decoration: none"><strong>Interactive</strong><p>Whole card is a link; lifts on hover.</p></a>
+      </div>
+
+      <h3>Form fields</h3>
+      <div class="row">
+        <div class="field"><label class="wp-label" for="demo-name">Game name</label><input class="wp-input" id="demo-name" placeholder="Pixel Pet"></div>
+        <div class="field"><label class="wp-label" for="demo-size">Watch size</label><select class="wp-select" id="demo-size"><option>41 mm round</option><option>45 mm round</option><option>Square</option></select></div>
+      </div>
+
+      <h3>Chips</h3>
+      <div class="row">
+        <button class="wp-chip" aria-pressed="true" data-toggle>All</button>
+        <button class="wp-chip" aria-pressed="false" data-toggle>Round</button>
+        <button class="wp-chip" aria-pressed="false" data-toggle>Square</button>
+      </div>
+
+      <h3>Badges and dots</h3>
+      <div class="row">
+        <span class="wp-badge wp-badge-ok">Pass</span>
+        <span class="wp-badge wp-badge-warn">Warn</span>
+        <span class="wp-badge wp-badge-err">Fail</span>
+        <span class="wp-badge wp-badge-info">Info</span>
+        <span class="wp-badge wp-badge-accent">New</span>
+        <span class="wp-badge wp-badge-purple">Beta</span>
+        <span class="wp-dot wp-dot-ok" title="ok"></span>
+        <span class="wp-dot wp-dot-warn" title="warn"></span>
+        <span class="wp-dot wp-dot-err" title="err"></span>
+        <span class="wp-dot wp-dot-off" title="off"></span>
+      </div>
+
+      <h3>Toast</h3>
+      <button class="wp-btn" id="toast-btn">Show toast</button>
+    </section>
+
+    <section id="contrast">
+      <h2>Contrast (WCAG)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sample</th><th>Text</th><th>Background</th><th>Ratio</th><th>Level</th></tr></thead>
+          <tbody id="contrast-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      MIT · Outfit and Fira Code under SIL OFL 1.1 ·
+      <a href="https://github.com/Figarist/wrist-pocket-ui">github.com/Figarist/wrist-pocket-ui</a>
+    </footer>
+  </main>
+
+  <div class="wp-toast wp-toast-ok" id="toast" role="status"><span class="wp-dot wp-dot-ok"></span>Saved to your watch</div>
+
+  <script>
+    const css = getComputedStyle(document.documentElement);
+    const token = (name) => css.getPropertyValue('--wp-' + name).trim();
+
+    document.querySelectorAll('[data-swatches]').forEach((grid) => {
+      grid.dataset.swatches.split(' ').forEach((name) => {
+        const el = document.createElement('div');
+        el.className = 'swatch';
+        el.innerHTML = '<div class="swatch-chip"></div><div class="swatch-meta"><code></code><span></span></div>';
+        el.firstChild.style.background = 'var(--wp-' + name + ')';
+        el.querySelector('code').textContent = '--wp-' + name;
+        el.querySelector('span').textContent = token(name);
+        grid.appendChild(el);
+      });
+    });
+
+    function luminance(hex) {
+      const n = hex.replace('#', '');
+      return [0, 2, 4].map((i) => parseInt(n.slice(i, i + 2), 16) / 255)
+        .map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4))
+        .reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
+    }
+    const pairs = [
+      ['text-primary', 'bg-app'], ['text-secondary', 'bg-surface'], ['text-tertiary', 'bg-surface-elevated'],
+      ['accent', 'bg-app'], ['accent-ink', 'accent'], ['accent-purple', 'bg-app'],
+      ['ok', 'bg-surface'], ['warn', 'bg-surface'], ['err', 'bg-surface'], ['info', 'bg-surface'], ['text-muted', 'bg-app'],
+    ];
+    const rows = document.getElementById('contrast-rows');
+    pairs.forEach(([fg, bg]) => {
+      const [a, b] = [luminance(token(fg)), luminance(token(bg))].sort((x, y) => y - x);
+      const ratio = (a + 0.05) / (b + 0.05);
+      const level = ratio >= 7 ? 'AAA' : ratio >= 4.5 ? 'AA' : 'decoration only';
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td><span class="sample">Aa 12</span></td><td><code></code></td><td><code></code></td><td></td><td></td>';
+      const sample = tr.querySelector('.sample');
+      sample.style.color = 'var(--wp-' + fg + ')';
+      sample.style.background = 'var(--wp-' + bg + ')';
+      tr.querySelectorAll('code')[0].textContent = '--wp-' + fg;
+      tr.querySelectorAll('code')[1].textContent = '--wp-' + bg;
+      tr.children[3].textContent = ratio.toFixed(2) + ':1';
+      tr.children[4].innerHTML = '<span class="wp-badge ' + (ratio >= 4.5 ? 'wp-badge-ok' : 'wp-badge-warn') + '"></span>';
+      tr.children[4].firstChild.textContent = level;
+      rows.appendChild(tr);
+    });
+
+    document.querySelectorAll('[data-toggle]').forEach((btn) => btn.addEventListener('click', () => {
+      btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    }));
+
+    const toast = document.getElementById('toast');
+    let timer;
+    document.getElementById('toast-btn').addEventListener('click', () => {
+      toast.classList.add('is-visible');
+      clearTimeout(timer);
+      timer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "name": "wrist-pocket-ui",
+  "version": "1.0.0",
+  "description": "Zero-dependency dark \"obsidian\" design system of the Wrist and Pocket site and WearView: CSS tokens, base, components, glass header, offline fonts, Sass tokens.",
+  "license": "MIT",
+  "author": "Ihor Sivochka (https://github.com/Figarist)",
+  "homepage": "https://github.com/Figarist/wrist-pocket-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Figarist/wrist-pocket-ui.git"
+  },
+  "keywords": ["css", "design-system", "design-tokens", "dark-theme", "wear-os", "scss"],
+  "style": "wrist-pocket-ui.css",
+  "files": [
+    "tokens.css",
+    "base.css",
+    "components.css",
+    "header.css",
+    "wrist-pocket-ui.css",
+    "scss/",
+    "fonts/"
+  ],
+  "exports": {
+    ".": "./wrist-pocket-ui.css",
+    "./wrist-pocket-ui.css": "./wrist-pocket-ui.css",
+    "./tokens.css": "./tokens.css",
+    "./base.css": "./base.css",
+    "./components.css": "./components.css",
+    "./header.css": "./header.css",
+    "./scss/_tokens.scss": "./scss/_tokens.scss",
+    "./fonts/*": "./fonts/*"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "test": "node --test test/*.test.mjs"
+  }
+}
