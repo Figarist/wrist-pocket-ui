@@ -1,0 +1,136 @@
+/**
+ * Wrist & Pocket UI — Glass Header (header.css)
+ */
+
+.wp-header {
+  height: var(--wp-header-h);
+  background-color: var(--wp-bg-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--wp-border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.wp-header-dense {
+  height: var(--wp-header-h-dense);
+  padding: 0 0.85rem;
+  gap: 0.65rem;
+}
+
+.wp-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--wp-text-primary);
+  min-width: 0;
+}
+
+.wp-mark {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--wp-font-sans);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--wp-text-primary);
+  text-decoration: none;
+  user-select: none;
+}
+
+.wp-mark span:first-child {
+  color: var(--wp-accent);
+}
+
+.wp-mark span:last-child {
+  color: var(--wp-accent-purple);
+}
+
+.wp-mark:hover span:first-child {
+  color: var(--wp-accent-hover);
+}
+
+.wp-mark:hover span:last-child {
+  color: var(--wp-accent-purple-hover);
+}
+
+.wp-header-divider {
+  color: var(--wp-border-medium);
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.wp-header-title {
+  font-family: var(--wp-font-sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.wp-header-dense .wp-header-title {
+  font-size: 0.95rem;
+}
+
+.wp-header-spacer {
+  flex: 1;
+}
+
+/* Header navigation links */
+.wp-nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.wp-nav-tool-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--wp-radius-sm);
+  background-color: transparent;
+  color: var(--wp-text-secondary);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all var(--wp-transition-fast);
+}
+
+.wp-nav-tool-link:hover {
+  background-color: var(--wp-bg-surface-hover);
+  color: var(--wp-text-primary);
+}
+
+.wp-nav-tool-link.is-active {
+  background-color: var(--wp-bg-surface-active);
+  color: var(--wp-accent);
+  font-weight: 600;
+}
+
+/* Status Pill */
+.wp-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--wp-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--wp-accent);
+  background-color: var(--wp-accent-bg);
+  border: 1px solid var(--wp-accent-border);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--wp-radius-sm);
+}
