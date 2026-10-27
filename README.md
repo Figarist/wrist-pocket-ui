@@ -106,7 +106,7 @@ Ratios use the W3C formula $\text{Contrast} = \frac{L_1 + 0.05}{L_2 + 0.05}$ and
 * `.wp-toast` — corner notifications (`.is-visible`, `-ok`, `-warn`, `-err`).
 * `.wp-header` — sticky glass header with the two-colour **W&P** mark (`-dense`, `.wp-status-pill`, `.wp-nav-tool-link`).
 
-Copy-paste markup for each is in [docs/COMPONENTS.md](docs/COMPONENTS.md). Open [`index.html`](index.html) for the living styleguide.
+Copy-paste markup for each is in [docs/COMPONENTS.md](docs/COMPONENTS.md). The living styleguide is [`index.html`](index.html), published at [sivochka.com/wrist-pocket-ui](https://sivochka.com/wrist-pocket-ui/).
 
 ---
 
