@@ -143,7 +143,6 @@ Change tokens only in `tokens.css`, rebuild, run the tests, update the table abo
 * [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — layers, token naming, generation pipeline.
 * [docs/COMPONENTS.md](docs/COMPONENTS.md) — every component with markup.
 * [docs/INTEGRATION_GUIDE.md](docs/INTEGRATION_GUIDE.md) — plain HTML, Vite, Jekyll/Sass, keeping a vendored copy in sync.
-* [AGENTS.md](AGENTS.md) — rules for AI agents working in this repository.
 
 ## License
 
