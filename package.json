@@ -33,6 +33,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/build.mjs --check",
+    "check:i18n": "node scripts/check-i18n.mjs",
     "test": "node --test test/*.test.mjs"
   }
 }

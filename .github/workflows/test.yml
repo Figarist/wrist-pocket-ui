@@ -19,5 +19,7 @@ jobs:
           node-version: 24
       - name: Generated files are up to date
         run: npm run check
+      - name: Styleguide i18n check
+        run: npm run check:i18n
       - name: Tokens, colours and WCAG contrast
         run: npm test
