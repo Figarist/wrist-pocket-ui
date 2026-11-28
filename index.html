@@ -11,6 +11,7 @@
   <link rel="alternate" hreflang="uk" href="?lang=uk">
   <link rel="alternate" hreflang="pl" href="?lang=pl">
   <link rel="alternate" hreflang="ru" href="?lang=ru">
+  <link rel="alternate" hreflang="ko" href="?lang=ko">
   <link rel="alternate" hreflang="x-default" href="?lang=en">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="base.css">
@@ -45,26 +46,65 @@
     footer { margin-top: 64px; font-size: 0.85rem; color: var(--wp-text-tertiary); }
     .wp-header-title { overflow: hidden; text-overflow: ellipsis; }
     .wp-lang-switch {
+      position: relative;
       display: inline-flex;
       align-items: center;
-      gap: 2px;
-      padding: 2px;
+    }
+    .wp-lang-trigger {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0 0.65rem;
       border-radius: var(--wp-radius-sm);
       background: var(--wp-bg-surface);
       border: 1px solid var(--wp-border-subtle);
+      color: var(--wp-text-primary);
+      font-family: var(--wp-font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background-color var(--wp-transition-fast), border-color var(--wp-transition-fast);
+    }
+    .wp-lang-trigger:hover {
+      background: var(--wp-bg-surface-hover);
+      border-color: var(--wp-border-hover);
+    }
+    .wp-lang-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      min-width: 156px;
+      padding: 4px;
+      border-radius: var(--wp-radius-md);
+      background: var(--wp-bg-surface-elevated);
+      border: 1px solid var(--wp-border-medium);
+      box-shadow: var(--wp-shadow-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 200;
+    }
+    .wp-lang-menu[hidden] {
+      display: none;
     }
     .wp-lang-btn {
       appearance: none;
       border: 0;
       background: transparent;
-      color: var(--wp-text-tertiary);
-      font-family: var(--wp-font-mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      padding: 0.22rem 0.45rem;
+      color: var(--wp-text-secondary);
+      font-family: var(--wp-font-sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-align: left;
+      min-height: 44px;
+      padding: 0.4rem 0.65rem;
       border-radius: var(--wp-radius-xs);
       cursor: pointer;
+      white-space: nowrap;
       transition: background-color var(--wp-transition-fast), color var(--wp-transition-fast);
     }
     .wp-lang-btn:hover {
@@ -74,6 +114,7 @@
     .wp-lang-btn.is-active {
       color: var(--wp-accent);
       background: var(--wp-accent-bg);
+      font-weight: 600;
     }
     @media (max-width: 680px) { .wp-nav-tools { display: none; } }
     @media (max-width: 480px) { .wp-status-pill { display: none; } }
@@ -92,11 +133,19 @@
       <a class="wp-nav-tool-link" href="#components" data-i18n="nav.components">Components</a>
       <a class="wp-nav-tool-link" href="#contrast" data-i18n="nav.contrast">Contrast</a>
     </nav>
-    <div class="wp-lang-switch" role="group" aria-label="Language" data-i18n-aria-label="header.langAria">
-      <button type="button" class="wp-lang-btn is-active" data-lang="en" aria-pressed="true" aria-label="English" lang="en">EN</button>
-      <button type="button" class="wp-lang-btn" data-lang="uk" aria-pressed="false" aria-label="Українська" lang="uk">UK</button>
-      <button type="button" class="wp-lang-btn" data-lang="pl" aria-pressed="false" aria-label="Polski" lang="pl">PL</button>
-      <button type="button" class="wp-lang-btn" data-lang="ru" aria-pressed="false" aria-label="Русский" lang="ru">RU</button>
+    <div class="wp-lang-switch" id="lang-switch">
+      <button type="button" class="wp-lang-trigger" id="lang-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language" data-i18n-aria-label="header.langAria">
+        <span aria-hidden="true">🌐</span>
+        <span id="lang-current">EN</span>
+        <span aria-hidden="true">▾</span>
+      </button>
+      <div class="wp-lang-menu" id="lang-menu" role="menu" aria-label="Language" data-i18n-aria-label="header.langAria" hidden>
+        <button type="button" class="wp-lang-btn is-active" role="menuitemradio" data-lang="en" aria-checked="true" lang="en">EN · English</button>
+        <button type="button" class="wp-lang-btn" role="menuitemradio" data-lang="uk" aria-checked="false" lang="uk">UK · Українська</button>
+        <button type="button" class="wp-lang-btn" role="menuitemradio" data-lang="pl" aria-checked="false" lang="pl">PL · Polski</button>
+        <button type="button" class="wp-lang-btn" role="menuitemradio" data-lang="ru" aria-checked="false" lang="ru">RU · Русский</button>
+        <button type="button" class="wp-lang-btn" role="menuitemradio" data-lang="ko" aria-checked="false" lang="ko">KO · 한국어</button>
+      </div>
     </div>
     <span class="wp-status-pill"><span class="wp-dot wp-dot-ok"></span>v1.0.0</span>
   </header>
@@ -617,10 +666,114 @@
           text: 'MIT · Outfit и Fira Code под лицензией SIL OFL 1.1 · <a href="https://github.com/Figarist/wrist-pocket-ui">github.com/Figarist/wrist-pocket-ui</a>',
         },
       },
+      ko: {
+        meta: {
+          title: 'Wrist & Pocket UI — 스타일 가이드',
+          description: 'wristandpocket.dev와 WearView의 디자인 시스템인 Wrist & Pocket UI의 라이브 스타일 가이드.',
+        },
+        header: {
+          brandAria: 'Wrist & Pocket 스튜디오',
+          title: 'UI 스타일 가이드',
+          navAria: '섹션',
+          langAria: '언어',
+        },
+        nav: {
+          palette: '팔레트',
+          components: '컴포넌트',
+          contrast: '대비',
+        },
+        hero: {
+          heading: '작은 화면.<br>하나의 디자인 시스템.',
+          lead: '<a href="https://wristandpocket.dev/">wristandpocket.dev</a>와 <a href="https://wristandpocket.dev/wearview/">WearView</a>를 구성하는 옵시디언 팔레트, Outfit + Fira Code 및 컴포넌트. 의존성 제로, 완전 오프라인.',
+        },
+        palette: {
+          heading: '팔레트',
+          surfaces: '표면',
+          bordersText: '테두리 및 텍스트',
+          brand: '브랜드',
+          status: '상태',
+        },
+        typography: {
+          heading: '타이포그래피',
+          sansSample: 'Outfit — 작은 화면. 진짜 세상.',
+          sansDesc: '인터페이스와 제목에는 Outfit 300–800을 사용하며, 키릴 문자와 CJK는 IBM Plex Sans 및 시스템 글꼴로 대체됩니다.',
+          monoSample: 'Fira Code — 454×454 · 60 fps · 0 B/frame',
+        },
+        components: {
+          heading: '컴포넌트',
+          buttons: {
+            heading: '버튼',
+            default: '기본',
+            primary: '주요',
+            ghost: '고스트',
+            delete: '삭제',
+            toggle: '토글',
+            small: '작게',
+            largePill: '큰 알약형',
+            disabled: '비활성화',
+          },
+          cards: {
+            heading: '카드',
+            surfaceTitle: '표면',
+            surfaceDesc: '그룹화된 콘텐츠를 위한 기본 패널.',
+            elevatedTitle: '돌출형',
+            elevatedDesc: '팝오버, 대화상자, 포커스 영역.',
+            interactiveTitle: '인터랙티브',
+            interactiveDesc: '카드 전체가 링크이며, 마우스를 올리면 떠오릅니다.',
+          },
+          forms: {
+            heading: '폼 필드',
+            gameNameLabel: '게임 이름',
+            gameNamePlaceholder: '픽셀 펫',
+            watchSizeLabel: '워치 크기',
+            size41: '41 mm 원형',
+            size45: '45 mm 원형',
+            sizeSquare: '사각형',
+          },
+          chips: {
+            heading: '칩',
+            all: '전체',
+            round: '원형',
+            square: '사각형',
+          },
+          badges: {
+            heading: '배지 및 점',
+            pass: '통과',
+            warn: '경고',
+            fail: '실패',
+            info: '정보',
+            new: '신규',
+            beta: '베타',
+          },
+          dots: {
+            ok: '정상',
+            warn: '경고',
+            err: '오류',
+            off: '꺼짐',
+          },
+          toast: {
+            heading: '토스트',
+            showBtn: '토스트 표시',
+            saved: '워치에 저장됨',
+          },
+        },
+        contrast: {
+          heading: '대비 (WCAG)',
+          colSample: '샘플',
+          colText: '텍스트',
+          colBackground: '배경',
+          colRatio: '비율',
+          colLevel: '수준',
+          decorationOnly: '장식 전용',
+        },
+        footer: {
+          text: 'MIT · Outfit 및 Fira Code는 SIL OFL 1.1 라이선스 · <a href="https://github.com/Figarist/wrist-pocket-ui">github.com/Figarist/wrist-pocket-ui</a>',
+        },
+      },
     };
     /* I18N_END */
 
-    const SUPPORTED_LANGS = ['en', 'uk', 'pl', 'ru'];
+    const SUPPORTED_LANGS = ['en', 'uk', 'pl', 'ru', 'ko'];
     const STORAGE_KEY = 'wp-ui-lang';
     let currentLang = 'en';
 
@@ -669,10 +822,13 @@
         el.setAttribute('content', t(el.dataset.i18nContent));
       });
 
+      const langCurrent = document.getElementById('lang-current');
+      if (langCurrent) langCurrent.textContent = currentLang.toUpperCase();
+
       document.querySelectorAll('.wp-lang-btn').forEach((btn) => {
         const active = btn.dataset.lang === currentLang;
         btn.classList.toggle('is-active', active);
-        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        btn.setAttribute('aria-checked', active ? 'true' : 'false');
       });
 
       try { localStorage.setItem(STORAGE_KEY, currentLang); } catch { /* ignore */ }
@@ -732,9 +888,41 @@
       rows.appendChild(tr);
     });
 
-    document.querySelectorAll('.wp-lang-btn').forEach((btn) => {
-      btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    const langSwitch = document.getElementById('lang-switch');
+    const langTrigger = document.getElementById('lang-trigger');
+    const langMenu = document.getElementById('lang-menu');
+
+    function setLangMenuOpen(open) {
+      langMenu.hidden = !open;
+      langTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    langTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setLangMenuOpen(langMenu.hidden);
     });
+
+    document.querySelectorAll('.wp-lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyLanguage(btn.dataset.lang);
+        setLangMenuOpen(false);
+        langTrigger.focus();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langMenu.hidden && !langSwitch.contains(e.target)) {
+        setLangMenuOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !langMenu.hidden) {
+        setLangMenuOpen(false);
+        langTrigger.focus();
+      }
+    });
+
     applyLanguage(detectInitialLang(), { syncUrl: false });
 
     document.querySelectorAll('[data-toggle]').forEach((btn) => btn.addEventListener('click', () => {

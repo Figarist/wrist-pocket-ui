@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-// Verifies 4-language (en, uk, pl, ru) i18n completeness and consistency in index.html:
-//   1. 100% key parity across en, uk, pl, ru (no missing, extra, or empty values).
-//   2. Every data-i18n* attribute in index.html resolves to a key in all 4 locales.
-//   3. Zero Ukrainian-specific Cyrillic letters (є, ї, і, ґ) leak into en, pl, or ru.
+// Verifies 5-language (en, uk, pl, ru, ko) i18n completeness and consistency in index.html:
+//   1. 100% key parity across en, uk, pl, ru, ko (no missing, extra, or empty values).
+//   2. Every data-i18n* attribute in index.html resolves to a key in all 5 locales.
+//   3. Zero Ukrainian-specific Cyrillic letters (є, ї, і, ґ) leak into en, pl, ru, or ko.
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,7 +21,7 @@ const sandbox = {};
 vm.runInNewContext(`${match[1]}\nthis.__I18N__ = I18N;`, sandbox);
 const I18N = sandbox.__I18N__;
 
-const LOCALES = ['en', 'uk', 'pl', 'ru'];
+const LOCALES = ['en', 'uk', 'pl', 'ru', 'ko'];
 const UKRAINIAN_CYRILLIC_RE = /[єіїґЄІЇҐ]/;
 
 function flatten(obj, prefix = '') {
